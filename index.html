@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Jeff💕Jenn"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ffe8f7 0%, #e6f0ff 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #ff6b95;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 2em;
+            color: #4a90a0;
+            margin: 20px 0;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff6b95;
+            transform: translateX(-50%);
+        }
+
+        .milestone {
+            width: calc(50% - 30px);
+            margin: 30px 0;
+            position: relative;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .milestone:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .milestone::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b95;
+            border-radius: 50%;
+            top: 50%;
+        }
+
+        .milestone:nth-child(odd)::before {
+            left: -40px;
+        }
+
+        .milestone:nth-child(even)::before {
+            right: -40px;
+        }
+
+        .milestone img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .milestone h3 {
+            color: #ff6b95;
+            margin-bottom: 10px;
+        }
+
+        /* Love Stats Section */
+        .love-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #ff6b95;
+            margin: 10px 0;
+        }
+        .stat-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Memory Album */
+        .memory-album {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .memory-content {
+            padding: 20px;
+        }
+
+        /* Love Letters Section */
+        .love-letters {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff5f8;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        /* Future Goals */
+        .future-goals {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .goal-card {
+            padding: 20px;
+            background: #fff5f8;
+            border-radius: 10px;
+        }
+
+        /* Song Player */
+        .song-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .milestone {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .milestone::before {
+                left: -30px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>366 Days Of Love</h1>
+            <p>Celebrating our first year together</p>
+            <div class="countdown" id="anniversary-countdown">
+                Our love story: 1 year, 0 months, 6 Days    
+            </div>
+        </section>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>CHAPTER ONE</h1>
+                <p>Celebrating our first year together</p>
+                
+                </div>
+            </section>
+
+        <!-- Love Stats -->
+        <section class="love-stats">
+            <div class="stat-card">
+                <h3>First Month</h3>
+                
+                <p>Each one better than the last</p>
+                <div class="stat-image">
+                    <img src=Images/1.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Second Month</h3>
+               
+                <p>Weekly adventures with you</p>
+                <div class="stat-image">
+                    <img src= Images/dec.JPG alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Third Month</h3>
+               
+                <p>Capturing our moments</p>
+                <div class="stat-image">
+                    <img src="Images/2.JPG"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Fourth Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/4.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Fifth Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/5.1.JPG"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Sixth Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/6.JPG"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Seventh Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/7.JPG"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Eight Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/8.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Ninth Month</h3>
+               
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/9.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Tenth Month</h3>
+                
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/10.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Eleventh Month</h3>
+                
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/11.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                
+            
+                <h3>Twelth Month</h3>
+                
+                <p>Hours of sweet conversations</p>
+                <div class="stat-image">
+                    <img src="Images/12.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline">
+            <div class="milestone">
+                <img src="Images/SUN.jpg" alt="First Date">
+                <h3>Baby Got me a SUNFLOWER</h3>
+                <p>You are my SUNFLOWER in a field of ROSES
+                    Is was a surreal feeling.Thanks for making me witness this kinda beauty!
+                </p>
+            </div>
+            <div class="milestone">
+                <img src="Images/kind.JPEG" alt="First Trip">
+                <h3>He knows just how to sweeten my cravings</h3>
+                <p>All those Kinder Joys you bought me aren’t just chocolates!they’re little pieces of happiness you’ve given me, reminding me how sweet life is with you.</p>
+            </div>
+            <div class="milestone">
+                <img src="Images/wing.jpg" alt="First Holiday">
+                <h3>The Art</h3>
+                <p>What else I would ask God in Life!The Efforts you put in small things matters a lot to me everytime
+                    Thank you for being like a wave that never tires of returning to the shore.The art you did explains everything 
+                </p>
+            </div>
+            <div class="milestone">
+                <img src="Images/th.jpg"alt="Special Moment">
+                <h3>Cute Texts </h3>
+                <p>Jeff till now I can feel this text in my heart!The first time you called me Thangamaeyy.The Moment I begged God,Oh please Let me have this boy till my last.
+                    Thanks for always making me feel like a Princess in your Own Kingdom
+
+                </p>
+            </div>
+            <div class="milestone">
+                <img src="Images/j.jpg"alt="Special Moment">
+                <h3>This is what happiness feels like</h3>
+                <p>You made me feel things that I never thought I could feel.Cheers to all the dates we made it in this one year😘</p>
+            </div>
+            <div class="milestone">
+                <img src="Images/g.jpg" alt="Special Moment">
+                <h3>Our Spiritual Bond</h3>
+                <p>Recent times we pray and read the Bible together,I feel our souls connect in a deep and meaningful way.
+                    Each prayer strengthens our bond.I am grateful for the light you bring into my life ,a partner who seeks God alongside me.
+                    Together, we walk this wonderful path of faith, love, and growing closer to God, and I treasure every moment we share with Him
+                </p>
+            </div>
+        </section>
+
+         <!-- Love Stats -->
+         <h2 style="text-align: center; margin: 40px 0;">MY MAN THROUGH MY EYES</h2>
+         <section class="love-stats">
+            <div class="stat-card">
+                
+                <div class="stat-image">
+                    <img src="Images/Y.jpg" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                
+                <div class="stat-image">
+                    <img src="Images/5.2.JPG" alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+               
+                <div class="stat-image">
+                    <img src= "Images/L.jpg"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+               
+                <div class="stat-image">
+                    <img src= "Images/H.jpg"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+                
+                <div class="stat-image">
+                    <img src="Images/P.jpg"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+               
+                <div class="stat-image">
+                    <img src="Images/U.jpg"alt="First Coffee Date">
+                </div>
+            </div>
+            <div class="stat-card">
+               
+                    <div class="stat-image">
+                        <img src="Images/T.jpg"alt="First Coffee Date">
+                    </div>
+            </div>
+            <div class="stat-card">
+               
+                        <div class="stat-image">
+                            <img src="Images/O.jpg"alt="First Coffee Date">
+                        </div>
+            </div>
+        </section>
+
+
+        <!-- Memory Album -->
+        <h2 style="text-align: center; margin: 40px 0;">Our Favorite Moments</h2>
+        <section class="memory-album">
+            <div class="memory-card">
+                <img src="Images/a.JPG"alt="Memory 1">
+                <div class="memory-content">
+                    <h3>DAY AT MY HOME</h3>
+                   
+                </div>
+            </div>
+            <div class="memory-card">
+                <img src="Images/5.1.JPG"alt="Memory 2">
+                <div class="memory-content">
+                    <h3>FIRST MOVIE DATE</h3>
+                   
+                </div>
+            </div>
+            
+            <div class="memory-card">
+                <img src="Images/c.jpg" alt="Memory 3">
+                <div class="memory-content">
+                    <h3>BEACH DATE</h3>
+                   
+                </div>        
+            </div>
+
+            <div class="memory-card">
+                <img src="Images/d.JPEG" alt="Memory 3">
+                <div class="memory-content">
+                    <h3>THE BEST CAPTURED PIC</h3>
+                 
+                </div>        
+            </div>
+
+            <div class="memory-card">
+                <img src="Images/e.jpg" alt="Memory 3">
+                <div class="memory-content">
+                    <h3>FIRST CHURCH DATE</h3>
+                    
+                </div>        
+            </div>
+
+            <div class="memory-card">
+                <img src="Images/f.jpg" alt="Memory 3">
+                <div class="memory-content">
+                    <h3>MY BOY'S DAY</h3>
+                    
+                </div>        
+            </div>
+        </section>
+
+        <!-- Love Letters -->
+        <section class="A Letter To My Love">
+            <h2 style="text-align: center; margin-bottom: 30px;">A Letter To My Love</h2>
+            <div class="letter">
+                <p>Happy One year to the Man who owns my Heart ♥️It wasn't exactly love at first sight but it was something like that🙈 the first time we spoke, I felt it(an ache) like a little electric burn but then I blinked and it was sealed, I fell for your eyes, for your laugh, for your soul, for you, I fell in love.I met you at the right time the late night talks, the early morning texts, the random songs sent ,the 11:11s, the i miss you throughout the day. I’m not perfect , but I’ll love you with everything I got ♥️ I would cancel all my plans if you tell me you want to see me.You redefined the emptiness.You gave the voids in me meaning, you showed me a world I had only seen in ManiRathnam Movies😮‍💨Thank you for loving the parts of me that are not easy to love.The greatest blessing this year is to fell in love with you Ammii !!Sorry for all the mess I made this year,for all the pain and hurt I gave. I'm not leaving, I'm not going anywhere, I'm staying right here with you. I wouldn't dream of being anywhere else.I want you to know that you can come to me when you're not ok, when your eyes are filled with tears and I'll hold you till you're a little more ok. I'm always here for you. I love you at your best and at your worst.Nothings gonna change that. Ours is one of those love stories ppl will talk abt for years to come becoz we have something extraordinary, something real.🌊🪽Thank you for remaining endlessly patient with me.Thank you for supporting me and pushing me further than I think I can possibly.You calm me when I panic and feel anxious. When things seem too big for me, you’re always there, holding my hand, showing me that together we can face anything.You are the only one who can make me smile without any intention and affect my emotions with every action of yours.
+                    I can't explain in words how much you mean to me but you're the one I'm afraid of losing and the one I want to keep in my life.
+                    I LOVE YOU JEFF 😘   </p>
+                <p style="text-align: right;">- Yours Jenny</p>
+            </div>
+            
+        </section>
+
+        <!-- Future Goals -->
+        <section class="future-goals">
+            <h2>Our Future Together</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3>Dream</h3>
+                    <p>Imagine us walking hand in hand through the beautiful Swiss Alps, with snow-covered mountains reaching up to the sky and clear lakes reflecting our happiness. After a day of exploring, we return to our peaceful cottage, nestled in the heart of nature. Our home would be a place of love and comfort, where we hear the joyful laughter of our children as they play in the garden.
+
+                        Our life together would be filled with simple, beautiful moments. We would start each day with quiet mornings, wrapped in each other’s arms, enjoying warm hugs and gentle conversations. Our love would be deep and strong, both emotionally and physically intimacy would be an important🫣way for us to stay connected and celebrate each other.
+                        
+                        Family time would be a priority whether we’re sharing meals, playing together, or just being present for one another. We’d make sure to create lasting memories with fun traditions and surprises gifts that show how much we care for each other, like special presents for birthdays or anniversaries that make us feel loved.
+                        
+                        We’d also love to travel together, exploring new places and creating unforgettable experiences. Shopping trips would be a mix of fun and practicality, picking out things for the home and for our family, while enjoying each other’s company.
+                        
+                        Through it all, our love would grow stronger with each passing day, whether it’s celebrating the small victories or supporting each other through challenges. The life we build together, filled with love, laughter, and shared experiences, would be something beautiful and unforgettable.
+                    </p>
+                </div>
+               
+            </div>
+        </section>
+
+        <!-- Song Player -->
+        <div class="song-player">
+            <audio id="love-song" controls>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // Update dates and numbers based on your actual anniversary
+        function updateCountdown() {
+            const now = new Date();
+            const anniversary = new Date('2024-11-06'); // Replace with your actual anniversary date
+            const timeDifference = now - anniversary;
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const months = Math.floor(days / 30);
+            const years = Math.floor(days / 365);
+            const remainingDays = days % 30;
+
+            document.getElementById('anniversary-countdown').textContent = 
+                `Our love story: ${years} year, ${months % 12} months, ${remainingDays} days`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000 * 60 * 60); // Update every hour
+    </script>
+</body>
+</html>
